@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+    flex-direction: column;
+    padding-top: 80px; /* Adjusted for fixed navbar */
+}
+
+/* Navbar Styling */
+.navbar {
+    width: 100%;
+    background-color: transparent;
+    color: #fff;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed; /* Fixes the navbar at the top */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    margin-bottom: 2rem;
+}
+
+.navbar-brand a {
+    color: #000;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.navbar-nav {
+    list-style: none;
+    display: flex;
+}
+
+.nav-item {
+    margin-left: 1rem;
+    position: relative;
+}
+
+.nav-item a {
+    color: #000;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    margin-left: 60px;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+.nav-item a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px; /* Position the line right under the text */
+    left: 0;
+    background-color: #000;
+    transition: width 0.3s ease;
+}
+
+.nav-item a:hover::after {
+    width: 100%;
+}
+
+.nav-item a:hover {
+    color: #000;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #000;
+    position: relative;
+    z-index: 1001; /* Ensures the button is above the dropdown */
+}
+
+.hamburger, .close {
+    font-size: 24px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    height: 100vh;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    z-index: 1000;
+    transition: right 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-item {
+    display: block;
+    color: #000;
+    text-decoration: none;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+}
+
+.dropdown-item:hover {
+    color: #e91e63;;
+}
+
+/* Form Container */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 480px; /* Limiting the width */
+    padding: 20px;
+}
+
+/* Header Styling */
+.login-header {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.login-header header {
+    color: #333;
+    font-size: 30px;
+    font-weight: 600;
+}
+
+/* Input Styling */
+.input-box .input-field {
+    width: 100%;
+    height: 60px;
+    font-size: 15px;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.05);
+    outline: none;
+    transition: .3s;
+}
+
+::placeholder {
+    font-weight: 500;
+    color: #222;
+}
+
+.input-field:focus {
+    width: 105%;
+}
+
+/* Forgot Password Section */
+.forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Section Styling */
+section {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+#check-login, #check-signup {
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #555;
+}
+
+a:hover {
+    color: #000;
+}
+
+/* Button Styling */
+.input-submit {
+    position: relative;
+    width: 100%;
+}
+
+.signin-btn, .signup-btn {
+    width: 100%;
+    height: 60px;
+    background: #222;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-submit label {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.signin-btn:hover, .signup-btn:hover {
+    background: #000;
+    transform: scale(1.05, 1);
+}
+
+/* Sign-Up Link */
+.sign-up-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-up-link a {
+    color: #000;
+    font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar-nav {
+        display: none;
+    }
+    .dropdown-item {
+        font-size:15px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+
+    .form-container {
+        max-width: 90%; /* Full width on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .login-header header {
+        font-size: 24px; /* Smaller font size on very small screens */
+    }
+
+    .input-box .input-field {
+        height: 50px; /* Adjust input height for small screens */
+        font-size: 14px;
+    }
+
+    .signin-btn, .signup-btn {
+        height: 50px; /* Adjust button height for small screens */
+    }
+    
+    .sign-up-link {
+        font-size: 14px; /* Adjust font size for small screens */
+    }
+}
