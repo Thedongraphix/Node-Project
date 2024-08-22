@@ -56,3 +56,11 @@ document.querySelector('#signup-form form').addEventListener('submit', function(
     })
     .catch(error => console.error('Error:', error));
 });
+const testPassword = 'testPassword';
+bcrypt.hash(testPassword, saltRounds, (err, hashedPassword) => {
+    if (err) {
+        console.error('Error hashing password:', err);
+    } else {
+        console.log('Hashed Password:', hashedPassword);
+    }
+});

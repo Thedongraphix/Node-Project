@@ -5,10 +5,11 @@ const bcrypt = require('bcrypt');
 const path = require('path');
 
 const app = express();
-const saltRounds = 10;
+const saltRounds = 10; // Number of salt rounds for hashing
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json()); // For parsing JSON bodies
 app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
 
 // Database connection
@@ -20,7 +21,10 @@ const connection = mysql.createConnection({
 });
 
 connection.connect(error => {
-    if (error) throw error;
+    if (error) {
+        console.error('Error connecting to MySQL Database:', error);
+        process.exit(1); // Exit the process if database connection fails
+    }
     console.log('Connected to MySQL Database...');
 });
 
@@ -35,23 +39,23 @@ app.post('/signup', (req, res) => {
 
     // Check if passwords match
     if (password !== cpassword) {
-        return res.json({ error: 'Passwords do not match' });
+        return res.json({ success: false, message: 'Passwords do not match' });
     }
 
     // Hash the password
     bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
             console.error('Error hashing password:', err);
-            return res.json({ error: 'Error signing up' });
+            return res.json({ success: false, message: 'Error signing up' });
         }
 
         // Insert into the database
         connection.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (error, results) => {
             if (error) {
                 console.error('Error inserting user:', error);
-                return res.json({ error: 'Error signing up' });
+                return res.json({ success: false, message: 'Error signing up' });
             }
-            res.json({ message: 'Signup successful' });
+            res.json({ success: true, message: 'Signup successful' });
         });
     });
 });
@@ -64,10 +68,10 @@ app.post('/login', (req, res) => {
     connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
         if (error) {
             console.error('Error querying user:', error);
-            return res.json({ error: 'Error logging in' });
+            return res.json({ success: false, message: 'Error logging in' });
         }
         if (results.length === 0) {
-            return res.json({ error: 'User not found' });
+            return res.json({ success: false, message: 'User not found' });
         }
 
         const user = results[0];
@@ -76,18 +80,19 @@ app.post('/login', (req, res) => {
         bcrypt.compare(password, user.password, (err, result) => {
             if (err) {
                 console.error('Error comparing passwords:', err);
-                return res.json({ error: 'Error logging in' });
+                return res.json({ success: false, message: 'Error logging in' });
             }
             if (result) {
-                res.json({ message: 'Login successful' });
+                res.json({ success: true, message: 'Login successful' });
             } else {
-                res.json({ error: 'Invalid credentials' });
+                res.json({ success: false, message: 'Invalid credentials' });
             }
         });
     });
 });
 
 // Start server
-app.listen(3000, () => {
-    console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {``
+    console.log(`Server is running on port ${PORT}`);
 });
