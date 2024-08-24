@@ -1,71 +1,63 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const mysql = require('mysql');
 const bcrypt = require('bcrypt');
-const path = require('path');
+const mysql = require('mysql');
+const bodyParser = require('body-parser');
 
 const app = express();
-const saltRounds = 10; // Number of salt rounds for hashing
+const saltRounds = 10;
 
 // Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(express.json()); // For parsing JSON bodies
-app.use(express.static(path.join(__dirname, 'public'))); // Serve static files
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
-// Database connection
+// MySQL connection
 const connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'userdatabase'
+    database: 'userdatabase' // Replace with your database name
 });
 
-connection.connect(error => {
-    if (error) {
-        console.error('Error connecting to MySQL Database:', error);
-        process.exit(1); // Exit the process if database connection fails
+connection.connect(err => {
+    if (err) {
+        console.error('Error connecting to the database:', err);
+        return;
     }
-    console.log('Connected to MySQL Database...');
+    console.log('Connected to the database');
 });
 
-// Serve index.html on root request
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Signup route
+// User registration (SignUp)
 app.post('/signup', (req, res) => {
     const { username, email, password, cpassword } = req.body;
 
-    // Check if passwords match
     if (password !== cpassword) {
         return res.json({ success: false, message: 'Passwords do not match' });
     }
 
-    // Hash the password
     bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
         if (err) {
             console.error('Error hashing password:', err);
             return res.json({ success: false, message: 'Error signing up' });
         }
 
-        // Insert into the database
-        connection.query('INSERT INTO users (username, email, password) VALUES (?, ?, ?)', [username, email, hashedPassword], (error, results) => {
+        const query = 'INSERT INTO users (username, email, password) VALUES (?, ?, ?)';
+        connection.query(query, [username, email, hashedPassword], (error, results) => {
             if (error) {
                 console.error('Error inserting user:', error);
                 return res.json({ success: false, message: 'Error signing up' });
             }
-            res.json({ success: true, message: 'Signup successful' });
+            res.json({ success: true, message: 'SignUp successful' });
         });
     });
 });
 
-// Login route
+// User login
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
 
-    // Find user in the database
-    connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+    const query = 'SELECT * FROM users WHERE email = ?';
+    connection.query(query, [email], (error, results) => {
         if (error) {
             console.error('Error querying user:', error);
             return res.json({ success: false, message: 'Error logging in' });
@@ -76,7 +68,6 @@ app.post('/login', (req, res) => {
 
         const user = results[0];
 
-        // Compare passwords
         bcrypt.compare(password, user.password, (err, result) => {
             if (err) {
                 console.error('Error comparing passwords:', err);
@@ -93,6 +84,6 @@ app.post('/login', (req, res) => {
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {``
+app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
