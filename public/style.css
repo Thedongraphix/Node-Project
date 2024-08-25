@@ -59,6 +59,7 @@ body {
     margin-left: 60px;
     position: relative;
     padding: 0.5rem 0;
+
 }
 
 .nav-item a::after {
@@ -243,6 +244,13 @@ a:hover {
     font-weight: 600;
 }
 
+.signup-message {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar-nav {
@@ -278,3 +286,4 @@ a:hover {
         font-size: 14px; /* Adjust font size for small screens */
     }
 }
+

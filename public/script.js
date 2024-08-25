@@ -70,3 +70,4 @@ document.querySelector('#show-login').addEventListener('click', () => {
     document.querySelector('#signup-form').style.display = 'none';
     document.querySelector('#login-form').style.display = 'block';
 });
+
