@@ -4,3 +4,4 @@ npm init -y
 npm run dev
 npm build
 deploy
+Test
