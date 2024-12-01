@@ -1,1 +1,3 @@
-based on web2 Steps for installation to be provided
+based on web2 
+Steps for installation to be provided
+Read docs
