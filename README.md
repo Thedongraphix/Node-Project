@@ -1,1 +1,1 @@
-Steps to successful clone to be provided 
+Steps to successful clone to be provided soon
