@@ -4,4 +4,4 @@ git add
 git commit 
 git push
 git push -m 
-now 
+git branch 
