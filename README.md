@@ -5,4 +5,4 @@ git commit
 git push
 git push -m 
 git branch 
-git pull
+git pull origin main
