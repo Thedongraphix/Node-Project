@@ -6,4 +6,4 @@ git push
 git push -m 
 git branch 
 git pull origin main
-git checkout
+git checkout -m
