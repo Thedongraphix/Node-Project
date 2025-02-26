@@ -8,3 +8,4 @@ git branch
 git pull origin main
 git checkout -m
 git rebase
+git --rebase
