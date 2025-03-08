@@ -10,4 +10,5 @@ git checkout -m
 git rebase
 git --rebase
 git merge
-git push set --upstream
+git push set --upstream 
+git push
