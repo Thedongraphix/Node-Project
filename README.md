@@ -7,7 +7,7 @@ git push -m
 git branch 
 git pull origin main
 git checkout -m
-git rebase
+git rebase -m 
 git --rebase
 git merge
 git push set --upstream df
