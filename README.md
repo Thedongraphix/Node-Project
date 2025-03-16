@@ -10,4 +10,4 @@ git checkout -m
 git rebase -m 
 git --rebase
 git merge
-git push set --upstream df
+git push set --upstream 
