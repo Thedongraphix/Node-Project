@@ -9,5 +9,5 @@ git pull origin main
 git checkout -m
 git rebase -m 
 git --rebase
-git merge
+git merge origin 
 git push set --upstream 
