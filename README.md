@@ -11,3 +11,5 @@ git rebase -m
 git --rebase
 git merge origin 
 git push set --upstream 
+
+MIT licence 
