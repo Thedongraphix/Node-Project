@@ -13,4 +13,4 @@ git merge origin
 git push --set -upstream origin main
 
 MIT licence 2025
-All rights reserved
+All rights reserved.
