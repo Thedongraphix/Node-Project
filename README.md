@@ -10,7 +10,7 @@ git checkout -m
 git rebase -m 
 git --rebase
 git merge origin 
-git push --set -upstream origin main
+git push --set -upstream origin 
 
 MIT licence 2025
 
