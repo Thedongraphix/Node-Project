@@ -14,3 +14,4 @@ git push --set -upstream origin
 
 MIT licence 2025
 new v.1
+v2 close
