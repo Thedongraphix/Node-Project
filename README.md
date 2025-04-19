@@ -13,4 +13,4 @@ git merge origin
 git push --set -upstream origin 
 
 MIT licence 2025
-v2 close
+v2 cls
