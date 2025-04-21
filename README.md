@@ -12,5 +12,5 @@ git --rebase
 git merge origin 
 git push --set -upstream origin 
 
-MIT licence 2025
+MIT licence 202
 v2 cls
