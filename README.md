@@ -13,4 +13,4 @@ git merge origin
 git push --set -upstream origin 
 
 MIT licence 202
-v2 cls
+v2 cls terminal 
