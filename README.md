@@ -1,4 +1,4 @@
-Steps to successful clone to be provided soon
+uSteps to successful clone to be provided soon
 git init
 git add 
 git commit 
@@ -14,3 +14,4 @@ git push --set -upstream origin
 
 MIT licence 202
 v2 cls terminal 
+ngrok
