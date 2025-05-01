@@ -1,4 +1,4 @@
-
+Initiate a new git repo
 git init
 git add 
 git commit 
