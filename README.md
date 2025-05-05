@@ -14,3 +14,4 @@ git merge origin
 git push --set -upstream origin 
 
 MIT licence 2025
+new db config
