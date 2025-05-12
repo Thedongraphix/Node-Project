@@ -1,4 +1,4 @@
-Initiate a new git repo
+Initiate a new git
 git commands
 git init
 git add 
