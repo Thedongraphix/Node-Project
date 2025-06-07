@@ -17,3 +17,4 @@ MIT licence 2025
 new db config
 supabase.ts
 new config 
+final push
