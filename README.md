@@ -15,5 +15,5 @@ git push --set -upstream origin
 
 MIT licence 2025
 supabase.ts
-new config 
+new configs
 
