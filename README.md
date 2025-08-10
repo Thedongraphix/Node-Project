@@ -18,4 +18,4 @@ supabase.ts
 new configs
 middleware ts
 stk
-v2 incoming
+v2 incoming soon 
