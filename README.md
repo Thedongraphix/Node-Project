@@ -18,7 +18,4 @@ supabase.ts
 new configs
 middleware ts
 stk
-v2 
-566
-ty
-hyess
+v2
