@@ -1,6 +1,6 @@
-Initiate a new git
+iInitiate a new git
 git commands
-git init
+git initt
 git add 
 git commit 
 git push
