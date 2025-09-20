@@ -18,5 +18,5 @@ supabase.ts
 new configs
 middleware ts
 stk
-v2
+v2t
 67
