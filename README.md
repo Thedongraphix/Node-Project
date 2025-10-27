@@ -4,7 +4,7 @@
 
 ---
 
-## 🧩 Overview
+## 🧩 Overviews
 
 **Nodex** is designed for **Web3 backend automation** — providing a robust base for developers building decentralized applications (dApps), onchain analytics tools, or payment and wallet infrastructure.
 
