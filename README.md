@@ -1,4 +1,4 @@
-# ⚡ **Nodex** — A Scalable Framework for Builders
+# ⚡ **Nodex** — A Scalable Framework for Builders on Base
 
 > **Nodex** is a modular, high-performance Node.js framework built for blockchain developers who want to interact seamlessly with smart contracts, wallets, and onchain data — all in one powerful backend layer.
 
